@@ -15,10 +15,8 @@
 
 also...
 - Reduce Dropout
-- Increase the number of layers and neurons in the neural network.
+- Increase the number of layers and neurons in the neural network. (which is increasing the model complexity)
 - Increase the number of epochs
-- Use a more complex model
-
 
 ### How to overcome overfitting?
 1) Simplify Model
