@@ -2,6 +2,7 @@
 ## Contents
 1. [How to overcome underfitting?](#how-to-overcome-underfitting)
 2. [How to overcome overfitting?](#how-to-overcome-overfitting)
+3. [How KNN differs from k-means clustering?](#how-knn-differs-from-k-means-clustering)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -28,3 +29,8 @@ also...
 4) Data Augmentation
     - In the context of image, text, or audio data, augmenting the dataset can help increase its diversity, leading to better generalization.
 
+### How KNN differs from k-means clustering?
+- [KNN](supervised_algorithm/KNN.ipynb) is supervised learning where [k-means clustering](unsupervised_algorithm/k_means_clustering.ipynb) is unsupervised learning
+- if we give a test value to knn, it get distance with all train values then sorts it. Then it takes k nearest values and get the most frequent value from them.
+- on the other hand, k-means clustering get the distance of trained k-centroids with the test data and choses the nearest centroid to assign the test data to that cluster.
+- The critical difference here is that KNN needs labeled points and is thus supervised learning, while k-means doesn’t—and is thus unsupervised learning.
