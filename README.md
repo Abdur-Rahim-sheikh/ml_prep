@@ -3,6 +3,7 @@
 1. [How to overcome underfitting?](#how-to-overcome-underfitting)
 2. [How to overcome overfitting?](#how-to-overcome-overfitting)
 3. [How KNN differs from k-means clustering?](#how-knn-differs-from-k-means-clustering)
+4. [Explain how a ROC curve works.](#explain-how-a-roc-curve-works)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
