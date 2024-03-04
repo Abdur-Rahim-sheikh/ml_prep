@@ -34,3 +34,9 @@ also...
 - if we give a test value to knn, it get distance with all train values then sorts it. Then it takes k nearest values and get the most frequent value from them.
 - on the other hand, k-means clustering get the distance of trained k-centroids with the test data and choses the nearest centroid to assign the test data to that cluster.
 - The critical difference here is that KNN needs labeled points and is thus supervised learning, while k-means doesn’t—and is thus unsupervised learning.
+
+### Explain how a ROC curve works.
+- ROC curve is a graphical representation of the trade-off between the true positive rate (TPR) and false positive rate (FPR) for a binary classification system as its discrimination threshold is varied. It is also called trade-off between the sensitivity of the model (true positives) vs the fall-out or the probability it will trigger a false alarm (false positives).
+
+<img src="static/roc.png" alt="ROC formula and graph"
+    height="350px" width="700px" style="filter: brightness(70%);">
