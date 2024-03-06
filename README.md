@@ -5,6 +5,7 @@
 3. [How KNN differs from k-means clustering?](#how-knn-differs-from-k-means-clustering)
 4. [Explain how a ROC curve works.](#explain-how-a-roc-curve-works)
 5. [Define precision and recall.](#define-precision-and-recall)
+6. [What is Naive Bayes’ Theorem?](#what-is-naive-bayes-theorem)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -53,3 +54,12 @@ also...
     - Recall = TP / (TP + FN)
 
     - Precision and recall are inversely related. As precision increases, recall falls and vice-versa. This is called the precision-recall trade-off.
+
+### What is Naive Bayes’ Theorem?
+- Naive Bayes is a classification algorithm for binary (two-class) and multi-class classification problems. It is based on Bayes’ theorem with the assumption of independence between every pair of features. Naive Bayes is a simple and effective algorithm for classification tasks.
+
+P(A|B) = P(B|A) * P(A) / P(B)
+
+follow the link to understand bayes theorem in detail: [Bayes Theorem](https://youtu.be/71oNiqPoKD8?si=ez8u-InIIzaWpVxx)
+
+![bayes theorem](static/bayes_krish_nayek.png)
