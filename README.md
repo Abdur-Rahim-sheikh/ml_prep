@@ -6,6 +6,7 @@
 4. [Explain how a ROC curve works.](#explain-how-a-roc-curve-works)
 5. [Define precision and recall.](#define-precision-and-recall)
 6. [What is Naive Bayes’ Theorem?](#what-is-naive-bayes-theorem)
+7. [What is ensemble learning technique?](#what-is-ensemble-learning-technique)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -63,3 +64,13 @@ P(A|B) = P(B|A) * P(A) / P(B)
 follow the link to understand bayes theorem in detail: [Bayes Theorem](https://youtu.be/71oNiqPoKD8?si=ez8u-InIIzaWpVxx)
 
 ![bayes theorem](static/bayes_krish_nayek.png)
+
+### What is ensemble learning technique?
+- Ensemble learning is a machine learning paradigm where multiple models (often called “weak learners”) are trained to solve the same problem and combined to get better results. The main hypothesis is that when weak models are correctly combined, they can outperform a single powerful model.
+
+    - **Bagging**: Training multiple individual models in a parallel way. Each model is trained by a random subset of the data.
+    - **Boosting**: Training multiple individual models in a sequential way. Each individual model learns from the mistakes of the previous model.
+    - **Stacking**: Training multiple individual models and combine them by training a meta-model to output predictions based on the multiple models’ predictions.
+
+    - **Random Forest**: Random Forest is an ensemble learning method that operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees.
+    - **Gradient Boosting**: Gradient Boosting is a machine learning technique for regression and classification problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees.
