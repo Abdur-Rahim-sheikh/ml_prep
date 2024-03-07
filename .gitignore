@@ -1,2 +1,3 @@
 *.csv
 */cnn_data/*
+*.txt
