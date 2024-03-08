@@ -7,6 +7,7 @@
 5. [Define precision and recall.](#define-precision-and-recall)
 6. [What is Naive Bayes’ Theorem?](#what-is-naive-bayes-theorem)
 7. [What is ensemble learning technique?](#what-is-ensemble-learning-technique)
+8. [What’s the “kernel trick” and how is it useful?](#whats-the-kernel-trick-and-how-is-it-useful)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -74,3 +75,14 @@ follow the link to understand bayes theorem in detail: [Bayes Theorem](https://y
 
     - **Random Forest**: Random Forest is an ensemble learning method that operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees.
     - **Gradient Boosting**: Gradient Boosting is a machine learning technique for regression and classification problems, which produces a prediction model in the form of an ensemble of weak prediction models, typically decision trees.
+
+### What’s the “kernel trick” and how is it useful?
+- The kernel trick is a method of using a linear classifier to solve a non-linear problem. It transforms the linearly inseparable data into linearly separable data by adding a new dimension to the feature space. This new dimension is called the kernel trick. The kernel trick is useful because it allows us to use linear classifiers to solve non-linear problems.
+the formula for the kernel trick is:
+    - K(x, y) = (x . y + 1)^d
+    - where d is the degree of the polynomial kernel.
+name of some kernels:
+    - Linear Kernel -> K(x, y) = x . y
+    - Polynomial Kernel -> K(x, y) = (x . y + 1)^d
+    - Gaussian Kernel -> K(x, y) = exp(-||x - y||^2 / 2 * sigma^2)
+    - Sigmoid Kernel -> K(x, y) = tanh(x . y + r)
