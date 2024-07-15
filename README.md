@@ -8,6 +8,7 @@
 6. [What is Naive Bayes’ Theorem?](#what-is-naive-bayes-theorem)
 7. [What is ensemble learning technique?](#what-is-ensemble-learning-technique)
 8. [What’s the “kernel trick” and how is it useful?](#whats-the-kernel-trick-and-how-is-it-useful)
+9. [Different cost funtions use in different algorithms](#different-cost-funtions-use-in-different-algorithms)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -86,3 +87,20 @@ name of some kernels:
     - Polynomial Kernel -> K(x, y) = (x . y + 1)^d
     - Gaussian Kernel -> K(x, y) = exp(-||x - y||^2 / 2 * sigma^2)
     - Sigmoid Kernel -> K(x, y) = tanh(x . y + r)
+
+### Different cost funtions use in different algorithms
+- **Mean Squared Error (MSE)**: 
+    - 1/n * Σ(yi - ŷi)^2
+    - Linear Regression
+- **Log Loss or Binary Cross-Entropy Loss**:
+    - -1/n * Σ(yi * log(ŷi) + (1 - yi) * log(1 - ŷi))
+    - Logistic Regression
+- **Categorical Cross-Entropy Loss**:
+    - -1/n * ΣΣ(yij * log(ŷij))
+    - Multiclass Classification
+- **Mean Absolute Error (MAE)**:
+    - 1/n * Σ|yi - ŷi|
+    - Regression
+- **Hinge Loss**:
+    - 1/n * Σmax(0, 1 - yi * ŷi)
+    - Support Vector Machine (SVM)
