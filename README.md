@@ -9,6 +9,7 @@
 7. [What is ensemble learning technique?](#what-is-ensemble-learning-technique)
 8. [What’s the “kernel trick” and how is it useful?](#whats-the-kernel-trick-and-how-is-it-useful)
 9. [Different cost funtions use in different algorithms](#different-cost-funtions-use-in-different-algorithms)
+10. [Different types of optimization algorithms and use](#different-types-of-optimization-algorithms-and-use)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -104,3 +105,26 @@ name of some kernels:
 - **Hinge Loss**:
     - 1/n * Σmax(0, 1 - yi * ŷi)
     - Support Vector Machine (SVM)
+
+### Different types of optimization algorithms and use
+- **Gradient Descent**
+    - `θ := θ - η ∇_θ J(θ)` 
+    - Simple linear regression, small datasets 
+- **Stochastic Gradient Descent (SGD)** 
+    - `θ := θ - η ∇_θ J(θ; x^(i); y^(i))`
+    - Large datasets, online learning          
+- **Mini-batch Gradient Descent**
+    - `θ := θ - η (1/m) ∑_(i=1)^m ∇_θ J(θ; x^(i); y^(i))`
+    - Balancing between batch and stochastic gradient descent   
+- **Adagrad**
+    - `θ := θ - (η / (sqrt(G_t,ii) + ε)) ∇_θ J(θ)`
+    - Sparse data, natural language processing, computer vision 
+- **RMSprop**
+    - `E[g^2]_t := ρ E[g^2]_(t-1) + (1-ρ) g_t^2` <br> `θ := θ - (η / sqrt(E[g^2]_t + ε)) g_t`
+    - Recurrent neural networks, deep learning 
+- **Adam**
+    - `m_t := β_1 m_(t-1) + (1-β_1) g_t`, `m̂_t := m_t / (1-β_1^t)` <br> `v_t := β_2 v_(t-1) + (1-β_2) g_t^2` ,  `v̂_t := v_t / (1-β_2^t)` <br> `θ := θ - (η m̂_t / (sqrt(v̂_t) + ε))`
+    - Widely used in deep learning for its adaptive learning rate
+- **Adamax**    
+    - `m_t := β_1 m_(t-1) + (1-β_1) g_t` <br> `u_t := max(β_2 u_(t-1), |g_t|)` <br> `θ := θ - (η / u_t) m_t`
+    - Extension of Adam, used in deep learning 
