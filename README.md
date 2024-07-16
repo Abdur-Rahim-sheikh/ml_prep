@@ -12,7 +12,6 @@
 10. [Different types of optimization algorithms and use](#different-types-of-optimization-algorithms-and-use)
 11. [Different types of activation functions and use](#different-types-of-activation-functions-and-use)
 
-
 ### How to overcome underfitting?
 1) Increase Model Complexity
     - Use more complex model architectures that can capture the underlying patterns in the data more effectively.
