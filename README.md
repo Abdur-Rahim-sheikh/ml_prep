@@ -10,6 +10,8 @@
 8. [What’s the “kernel trick” and how is it useful?](#whats-the-kernel-trick-and-how-is-it-useful)
 9. [Different cost funtions use in different algorithms](#different-cost-funtions-use-in-different-algorithms)
 10. [Different types of optimization algorithms and use](#different-types-of-optimization-algorithms-and-use)
+11. [Different types of activation functions and use](#different-types-of-activation-functions-and-use)
+
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -128,3 +130,26 @@ name of some kernels:
 - **Adamax**    
     - `m_t := β_1 m_(t-1) + (1-β_1) g_t` <br> `u_t := max(β_2 u_(t-1), |g_t|)` <br> `θ := θ - (η / u_t) m_t`
     - Extension of Adam, used in deep learning 
+
+### Different types of activation functions and use
+- **Sigmoid**
+    - `σ(x) = 1 / (1 + exp(-x))`
+    - Output layer of binary classification models
+- **Tanh**
+    - `tanh(x) = 2σ(2x) - 1` = (exp(x) - exp(-x)) / (exp(x) + exp(-x))
+    - Hidden layers of neural networks
+- **ReLU**
+    - `ReLU(x) = max(0, x)`
+    - Hidden layers of neural networks (most popular for hidden)
+- **Leaky ReLU**
+    - `LeakyReLU(x) = max(αx, x)`
+    - Hidden layers of neural networks
+- **Softmax**
+    - `softmax(x_i) = exp(x_i) / Σ_j exp(x_j)`
+    - Output layer of multiclass classification models
+- **Swish**
+    - `Swish(x) = x * sigmoid(x)`
+    - Hidden layers of neural networks
+- **GELU**
+    - `GELU(x) = 0.5x(1 + tanh(sqrt(2/pi)(x + 0.044715x^3)))`
+    - Hidden layers of neural networks
