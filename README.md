@@ -11,6 +11,7 @@
 9. [Different cost funtions use in different algorithms](#different-cost-funtions-use-in-different-algorithms)
 10. [Different types of optimization algorithms and use](#different-types-of-optimization-algorithms-and-use)
 11. [Different types of activation functions and use](#different-types-of-activation-functions-and-use)
+12. [Calculating matrix output shape in CNN](#calculating-matrix-output-shape-in-cnn)
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -152,3 +153,18 @@ name of some kernels:
 - **GELU**
     - `GELU(x) = 0.5x(1 + tanh(sqrt(2/pi)(x + 0.044715x^3)))`
     - Hidden layers of neural networks
+
+### Calculating matrix output shape in CNN
+- The formula to calculate the output shape of a convolutional layer is given by:
+    - `O = (W - K + 2P) / S + 1`
+    - where O is the output height/length, W is the input height/length, K is the filter size, P is the padding, and S is the stride.
+    - The output shape of a convolutional layer is determined by the input shape, filter size, padding, and stride.
+
+    - **Example**: 
+        - Input shape: 32x32x3
+        - Filter size: 5x5
+        - Padding: 2
+        - Stride: 1
+        - Output shape: (32 - 5 + 2*2) / 1 + 1 = 32
+
+        - The output shape of the convolutional layer is 32x32x3.
