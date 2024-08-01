@@ -134,7 +134,10 @@ name of some kernels:
 ### Different types of activation functions and use
 - **Sigmoid**
     - `σ(x) = 1 / (1 + exp(-x))`
-    - Output layer of binary classification models
+    - *Output layer* of binary classification models
+- **Softmax**
+    - `softmax(x_i) = exp(x_i) / Σ_j exp(x_j)`
+    - *Output layer* of multiclass classification models
 - **Tanh**
     - `tanh(x) = 2σ(2x) - 1` = (exp(x) - exp(-x)) / (exp(x) + exp(-x))
     - Hidden layers of neural networks
@@ -144,9 +147,6 @@ name of some kernels:
 - **Leaky ReLU**
     - `LeakyReLU(x) = max(αx, x)`
     - Hidden layers of neural networks
-- **Softmax**
-    - `softmax(x_i) = exp(x_i) / Σ_j exp(x_j)`
-    - Output layer of multiclass classification models
 - **Swish**
     - `Swish(x) = x * sigmoid(x)`
     - Hidden layers of neural networks
