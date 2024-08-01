@@ -7,6 +7,7 @@
 4. [Principles to build a RESTful API](#principles-to-build-a-restful-api)
 5. [Database sharding](#database-sharding)
 6. [Getting 4th highest salary from a table](#getting-4th-highest-salary-from-a-table)
+7. [Concepts of kubernetes and how it manages containers](#concepts-of-kubernetes-and-how-it-manages-containers)
 
 ### What are literals in Python?
 Literal's in Python is defined as a data which is given in a variable or constant. Python supports the following 5 types of literals:
@@ -88,3 +89,14 @@ WHERE r = 4;
 ```
 
 postgresql also has more method on `OVER` clause like `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `PERCENT_RANK()`, `CUME_DIST()`, `NTILE()`, `LAG()`, `LEAD()`, `FIRST_VALUE()`, `LAST_VALUE()`, `NTH_VALUE()`
+
+
+### Concepts of kubernetes and how it manages containers
+- Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+- *pods*: A pod is the smallest deployable unit in Kubernetes, consisting of one or more containers that share resources and are scheduled together on the same node.
+- *kubelet*: The kubelet is an agent that runs on each node in the cluster and is responsible for managing the pods and containers on that node.
+- *nodes*: A node is a physical or virtual machine that runs the Kubernetes software and can host multiple pods.
+- *load balancing*: Kubernetes provides built-in support for load balancing, allowing traffic to be distributed across multiple pods to ensure high availability and scalability.
+- *scaling*: Kubernetes supports horizontal scaling, allowing additional pods to be added or removed dynamically based on resource usage and demand.
+
+In summary, Kubernetes inhances the docker container power in terms of scaling, load balancing, and managing the containers in production environment.
