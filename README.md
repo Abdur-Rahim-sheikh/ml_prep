@@ -134,10 +134,10 @@ name of some kernels:
 ### Different types of activation functions and use
 - **Sigmoid**
     - `σ(x) = 1 / (1 + exp(-x))`
-    - *Output layer* of binary classification models
+    -  `Output layer` of binary classification models
 - **Softmax**
     - `softmax(x_i) = exp(x_i) / Σ_j exp(x_j)`
-    - *Output layer* of multiclass classification models
+    - `Output layer` of multiclass classification models
 - **Tanh**
     - `tanh(x) = 2σ(2x) - 1` = (exp(x) - exp(-x)) / (exp(x) + exp(-x))
     - Hidden layers of neural networks
@@ -156,9 +156,9 @@ name of some kernels:
 
 ### Calculating matrix output shape in CNN
 - The formula to calculate the output shape of a convolutional layer is given by:
-    - `O = (W - K + 2P) / S + 1`
-    - where O is the output height/length, W is the input height/length, K is the filter size, P is the padding, and S is the stride.
-    - The output shape of a convolutional layer is determined by the input shape, filter size, padding, and stride.
+    - `O = (N - K + 2P) / S + 1`
+    - where O is the output height/length, N is the input height/length, K is the Kernel size, P is the padding, and S is the stride.
+    - The output shape of a convolutional layer is determined by the input shape, kernel size, padding, and stride.
 
 - **Example**: 
     - Input shape: 32x32x3
