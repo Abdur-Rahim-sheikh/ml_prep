@@ -56,11 +56,9 @@ also...
 ### Define precision and recall.
 - Precision and recall are two fundamental metrics for evaluating the performance of classification models. They are defined as follows:
     - Precision: The ratio of correctly predicted positive observations to the total predicted positive observations. It is also called Positive Predictive Value (PPV).
+        - TP / (TP + FP)
     - Recall: The ratio of correctly predicted positive observations to the all observations in actual class. It is also called True Positive Rate or Sensitivity.
-
-    - Precision = TP / (TP + FP)
-    - Recall = TP / (TP + FN)
-
+        - TP / (TP + FN)
     - Precision and recall are inversely related. As precision increases, recall falls and vice-versa. This is called the precision-recall trade-off.
 
 ### What is Naive Bayes’ Theorem?
