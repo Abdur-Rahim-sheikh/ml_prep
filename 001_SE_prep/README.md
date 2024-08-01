@@ -8,6 +8,7 @@
 5. [Database sharding](#database-sharding)
 6. [Getting 4th highest salary from a table](#getting-4th-highest-salary-from-a-table)
 7. [Concepts of kubernetes and how it manages containers](#concepts-of-kubernetes-and-how-it-manages-containers)
+8. [Pointer vs Reference](#pointer-vs-reference)
 
 ### What are literals in Python?
 Literal's in Python is defined as a data which is given in a variable or constant. Python supports the following 5 types of literals:
@@ -100,3 +101,15 @@ postgresql also has more method on `OVER` clause like `ROW_NUMBER()`, `RANK()`, 
 - *scaling*: Kubernetes supports horizontal scaling, allowing additional pods to be added or removed dynamically based on resource usage and demand.
 
 In summary, Kubernetes inhances the docker container power in terms of scaling, load balancing, and managing the containers in production environment.
+
+
+### Pointer vs Reference
+- At some extent they are similar, as pointer is low level concept and reference is high level concept.
+- Pointer is a variable that stores the memory address of another variable, while reference is an alias for a variable.
+- Pointer has its own memory address and size, while reference does not have its own memory address and size.
+
+```cpp
+int a = 10;
+int *p = &a; // p is a pointer to a
+int &r = a; // r is a reference to a
+```
