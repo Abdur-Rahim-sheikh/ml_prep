@@ -12,6 +12,8 @@
 10. [Different types of optimization algorithms and use](#different-types-of-optimization-algorithms-and-use)
 11. [Different types of activation functions and use](#different-types-of-activation-functions-and-use)
 12. [Calculating matrix output shape in CNN](#calculating-matrix-output-shape-in-cnn)
+13. [Steps in a machine learning pipeline](#steps-in-a-machine-learning-pipeline)
+
 
 ### How to overcome underfitting?
 1) Increase Model Complexity
@@ -160,11 +162,19 @@ name of some kernels:
     - where O is the output height/length, W is the input height/length, K is the filter size, P is the padding, and S is the stride.
     - The output shape of a convolutional layer is determined by the input shape, filter size, padding, and stride.
 
-    - **Example**: 
-        - Input shape: 32x32x3
-        - Filter size: 5x5
-        - Padding: 2
-        - Stride: 1
-        - Output shape: (32 - 5 + 2*2) / 1 + 1 = 32
+- **Example**: 
+    - Input shape: 32x32x3
+    - Filter size: 5x5
+    - Padding: 2
+    - Stride: 1
+    - Output shape: (32 - 5 + 2*2) / 1 + 1 = 32
+    - The output shape of the convolutional layer is 32x32x3.
 
-        - The output shape of the convolutional layer is 32x32x3.
+### Steps in a machine learning pipeline
+1) **Data Collection**: Collecting data from various sources like databases, APIs, or web scraping.
+2) **Data Preprocessing**: This stage involves cleaning, transforming and preparing input data for modeling. Common preprocessing steps include handling missing values, encoding categorical variables, scaling numerical features and splitting the data into training and testing sets.
+3) **Feature Engineering**: Creating new features from existing features or transforming features.
+4) **Model Selection**: Choosing the appropriate machine learning model based on the problem type (classification, regression, clustering, etc.) and the data characteristics.
+5) **Model Training**: Training the selected model on the training data.
+6) **Model Evaluation**: Evaluating the model's performance on the test data using appropriate evaluation metrics.
+7) **Hyperparameter Tuning**: Tuning the model's hyperparameters to improve performance.
