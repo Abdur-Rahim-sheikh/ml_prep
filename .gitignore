@@ -1,3 +1,4 @@
 *.csv
 */cnn_data/*
 *.txt
+*.zip
