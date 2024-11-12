@@ -114,10 +114,10 @@ name of some kernels:
 ### Different Types of Optimization Algorithms and Their Use
 
 Let:
-- **$ \theta $** = parameters (or weights) of the model
-- **$ \eta $** = learning rate (controls the step size in updating parameters)
-- **$ J(\theta) $** = cost function (objective function we want to minimize)
-- **$ \nabla_{\theta} J(\theta) $** = gradient of the cost function with respect to parameters (direction to adjust $ \theta $` to reduce `$ J(\theta) $)
+- **$\theta$** = parameters (or weights) of the model
+- **$\eta$** = learning rate (controls the step size in updating parameters)
+- **$J(\theta)$** = cost function (objective function we want to minimize)
+- **$\nabla_{\theta} J(\theta)$** = gradient of the cost function with respect to parameters (direction to adjust $\theta$` to reduce `$J(\theta)$)
 
 ---
 
@@ -125,38 +125,39 @@ Let:
 - **Update Rule:**  
   $\theta := \theta - \eta \nabla_{\theta} J(\theta)$
 - **How it Uses the Cost Function:**  
-  Calculates the gradient of the cost function over the entire dataset, updating $ \theta $ in the direction that decreases $ J(\theta) $. Suitable for smaller datasets due to the computational cost of calculating the gradient for all data points.
+  Calculates the gradient of the cost function over the entire dataset, updating $\theta$ in the direction that decreases $J(\theta)$. Suitable for smaller datasets due to the computational cost of calculating the gradient for all data points.
 
 #### 2. Stochastic Gradient Descent (SGD)
 - **Update Rule:**  
-  $ \theta := \theta - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)}) $
+  $\theta := \theta - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$
 - **How it Uses the Cost Function:**  
   Computes the gradient based on one randomly chosen sample `(x^(i), y^(i))` at each iteration, providing faster, noisier updates. This approach is ideal for large datasets and allows for online learning.
 
 #### 3. Mini-batch Gradient Descent
 - **Update Rule:**  
-  $ \theta := \theta - \eta \frac{1}{m} \sum_{i=1}^m \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)}) $
+  $\theta := \theta - \eta \frac{1}{m} \sum_{i=1}^m \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$
 - **How it Uses the Cost Function:**  
   Computes the average gradient over a subset of the dataset (mini-batch), balancing the stability of batch gradient descent with the efficiency of SGD. Reduces the cost function using the average gradient over the mini-batch.
 
 #### 4. Adagrad
 - **Update Rule:**  
-  $ \theta := \theta - \frac{\eta}{\sqrt{G_{t, ii}} + \epsilon} \nabla_{\theta} J(\theta) $
+  $\theta := \theta - \frac{\eta}{\sqrt{G_{t, ii}} + \epsilon} \nabla_{\theta} J(\theta)$
 - **How it Uses the Cost Function:**  
-  Adapts the learning rate based on previous gradients accumulated in $ G_t $. As $ \theta $ approaches a minimum, the effective learning rate decreases, making it well-suited for sparse data like NLP or computer vision tasks. $ \epsilon $ prevents division by zero.
+  Adapts the learning rate based on previous gradients accumulated in $G_t$. As $\theta$ approaches a minimum, the effective learning rate decreases, making it well-suited for sparse data like NLP or computer vision tasks. $\epsilon$ prevents division by zero.
 
 #### 5. RMSprop
 - **Update Rule:**  
-  $ E[g^2]_t := \rho E[g^2]_{t-1} + (1 - \rho) g_t^2 $
-  $ \theta := \theta - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_t $
+  $E[g^2]_t := \rho E[g^2]_{t-1} + (1 - \rho) g_t^2$
+  $\theta := \theta - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_t$
 - **How it Uses the Cost Function:**  
   Keeps a moving average of squared gradients to adapt the learning rate. This helps in minimizing the cost function, especially in non-stationary tasks (like RNNs), by focusing updates based on recent gradients.
 
 #### 6. Adam
 - **Update Rule:**  
-  $ m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t $, ` `$ \hat{m}_t := \frac{m_t}{1 - \beta_1^t} $
-  $ v_t := \beta_2 v_{t-1} + (1 - \beta_2) g_t^2 $, ` `$ \hat{v}_t := \frac{v_t}{1 - \beta_2^t} $
-  $ \theta := \theta - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $
+  $m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t$, ` `$\hat{m}_t := \frac{m_t}{1 - \beta_1^t}$
+  $v_t := \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$, ` `$\hat{v}_t := \frac{v_t}{1 - \beta_2^t}$
+  $\theta := \theta - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$
+  
 - **How it Uses the Cost Function:**  
   Combines momentum (moving average of past gradients) and RMSprop (squared gradient scaling) for adaptive learning rates. By adjusting rates based on the first and second moments, Adam efficiently minimizes the cost function and is widely used in deep learning.
 
