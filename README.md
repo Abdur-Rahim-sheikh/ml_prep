@@ -114,10 +114,10 @@ name of some kernels:
 ### Different Types of Optimization Algorithms and Their Use
 
 Let:
-- **$\theta$** = parameters (or weights) of the model
-- **$\eta$** = learning rate (controls the step size in updating parameters)
-- **$J(\theta)$** = cost function (objective function we want to minimize)
-- **$\nabla_{\theta} J(\theta)$** = gradient of the cost function with respect to parameters (direction to adjust $\theta$` to reduce `$J(\theta)$)
+- $\theta$ = parameters (or weights) of the model
+- $\eta$ = learning rate (controls the step size in updating parameters)
+- $J(\theta)$ = cost function (objective function we want to minimize)
+- $\nabla_{\theta} J(\theta)$ = gradient of the cost function with respect to parameters (direction to adjust $\theta$ ` to reduce ` $J(\theta)$)
 
 ---
 
@@ -157,7 +157,7 @@ Let:
   $m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t$, ` `$\hat{m}_t := \frac{m_t}{1 - \beta_1^t}$
   $v_t := \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$, ` `$\hat{v}_t := \frac{v_t}{1 - \beta_2^t}$
   $\theta := \theta - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$
-  
+
 - **How it Uses the Cost Function:**  
   Combines momentum (moving average of past gradients) and RMSprop (squared gradient scaling) for adaptive learning rates. By adjusting rates based on the first and second moments, Adam efficiently minimizes the cost function and is widely used in deep learning.
 
