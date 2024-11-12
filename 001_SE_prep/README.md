@@ -9,6 +9,7 @@
 6. [Getting 4th highest salary from a table](#getting-4th-highest-salary-from-a-table)
 7. [Concepts of kubernetes and how it manages containers](#concepts-of-kubernetes-and-how-it-manages-containers)
 8. [Pointer vs Reference](#pointer-vs-reference)
+9. [Heap memory structure vs Stack memory structure](#heap-memory-structure-vs-stack-memory-structure)
 
 ### What are literals in Python?
 Literal's in Python is defined as a data which is given in a variable or constant. Python supports the following 5 types of literals:
@@ -113,3 +114,20 @@ int a = 10;
 int *p = &a; // p is a pointer to a
 int &r = a; // r is a reference to a
 ```
+
+### Heap memory structure vs Stack memory structure
+- **Stack memory structure**:
+    - Stack memory is linear and follows LIFO (Last In First Out) order.
+    - Stack memory is temporary; it holds data that only needs to exist within the current function or block. when the function or block ends, the memory is automatically deallocated.
+    - Allocation and deallocation are automatically handled by the compiler.
+    - Example:
+        - Local variables, function parameters, return addresses, etc.
+- **Heap memory structure**:
+    - The heap is a larger pool of memory with no inherent structure or order. Allowing dynamic memory blocks of any size, anywhere within its space.
+    - Primary used for for dynamic memory allocation, allowing memory to be allocated at the runtime as needed. Objects, dynamic arrays and data structures that need to persist beyond a single function call or score are stored in the heap.
+    - Heap memory persists as long as the program runs, and it must be explicitly deallocated by the program.
+    
+- **NOTE**: 
+    - `Before c++11`, we need to manually deallocate the memory allocated in heap using `delete` keyword. But after c++11, we can use smart pointers like `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr` to automatically deallocate the memory.
+    - In `python`, each object has a reference count, and when the reference count drops to zero, the memory is deallocated automatically by the garbage collector.
+    - `Java` and `C#`, use a technique where the garbage collector periodically scans the heap memory to identify and deallocate objects that are no longer in use.
