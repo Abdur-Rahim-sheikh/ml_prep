@@ -175,31 +175,31 @@ Each algorithm's update rule moves $ \theta $ in the direction that minimizes th
 
 ### Different types of activation functions and use
 1. **Sigmoid**
-    - **Formula**: $ \sigma(x) = \frac{1}{1 + e^{-x}} $
+    - **Formula**: $\sigma(x) = \frac{1}{1 + e^{-x}} $
     - **Use**: Often used in the output layer for binary classification models to produce probabilities between 0 and 1.
 
 2. **Softmax**
-    - **Formula**: $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}} $
+    - **Formula**: $\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}} $
     - **Use**: Typically used in the output layer for multiclass classification models. It converts logits into probabilities for each class.
 
 3. **Tanh (Hyperbolic Tangent)**
-    - **Formula**: $ \text{tanh}(x) = 2\sigma(2x) - 1 = \frac{e^x - e^{-x}}{e^x + e^{-x}} $
+    - **Formula**: $\text{tanh}(x) = 2\sigma(2x) - 1 = \frac{e^x - e^{-x}}{e^x + e^{-x}} $
     - **Use**: Commonly used in hidden layers of neural networks. Produces outputs between -1 and 1, which helps with symmetry around zero.
 
 4. **ReLU (Rectified Linear Unit)**
-    - **Formula**: $ \text{ReLU}(x) = \max(0, x) $
+    - **Formula**: $\text{ReLU}(x) = \max(0, x) $
     - **Use**: Widely used in hidden layers, especially in deep networks, because it helps prevent the "vanishing gradient" problem.
 
 5. **Leaky ReLU**
-    - **Formula**: $ \text{LeakyReLU}(x) = \max(\alpha x, x) $ (where $ \alpha $ is a small constant, often 0.01)
+    - **Formula**: $\text{LeakyReLU}(x) = \max(\alpha x, x) $ (where $\alpha $ is a small constant, often 0.01)
     - **Use**: Used in hidden layers to address the problem of "dying ReLUs" by allowing a small gradient when $ x < 0 $.
 
 6. **Swish**
-    - **Formula**: $ \text{Swish}(x) = x \cdot \sigma(x) $
+    - **Formula**: $\text{Swish}(x) = x \cdot \sigma(x) $
     - **Use**: Often used in hidden layers for a smoother alternative to ReLU, shown to work well in some deep learning models.
 
 7. **GELU (Gaussian Error Linear Unit)**
-    - **Formula**: $ \text{GELU}(x) = 0.5x(1 + \text{tanh}(\sqrt{2/\pi} (x + 0.044715x^3))) $
+    - **Formula**: $\text{GELU}(x) = 0.5x(1 + \text{tanh}(\sqrt{2/\pi} (x + 0.044715x^3))) $
     - **Use**: Used in hidden layers, particularly in transformer architectures like BERT, to give a smoother, probabilistic alternative to ReLU.
 
 
