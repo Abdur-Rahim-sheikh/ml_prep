@@ -191,8 +191,8 @@ Each algorithm's update rule moves $ \theta $ in the direction that minimizes th
     - **Use**: Widely used in hidden layers, especially in deep networks, because it helps prevent the "vanishing gradient" problem.
 
 5. **Leaky ReLU**
-    - **Formula**: $\text{LeakyReLU}(x) = \max(\alpha x, x) $ (where $\alpha $ is a small constant, often 0.01)
-    - **Use**: Used in hidden layers to address the problem of "dying ReLUs" by allowing a small gradient when $ x < 0 $.
+    - **Formula**: $\text{LeakyReLU}(x) = \max(\alpha x, x)$ (where $\alpha$ is a small constant, often 0.01)
+    - **Use**: Used in hidden layers to address the problem of "dying ReLUs" by allowing a small gradient when $x < 0$.
 
 6. **Swish**
     - **Formula**: $\text{Swish}(x) = x \cdot \sigma(x) $
