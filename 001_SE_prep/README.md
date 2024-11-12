@@ -90,7 +90,23 @@ SELECT name, salary FROM (
 WHERE r = 4;
 ```
 
-postgresql also has more method on `OVER` clause like `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `PERCENT_RANK()`, `CUME_DIST()`, `NTILE()`, `LAG()`, `LEAD()`, `FIRST_VALUE()`, `LAST_VALUE()`, `NTH_VALUE()`
+postgresql also has more method on `OVER` clause like 
+`ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `PERCENT_RANK()`, `CUME_DIST()`, `NTILE()`, `LAG()`, `LEAD()`, `FIRST_VALUE()`, `LAST_VALUE()`, `NTH_VALUE()`
+
+| Function       | Description                                                                                                       |
+|----------------|-------------------------------------------------------------------------------------------------------------------|
+| `ROW_NUMBER()` | Assigns a unique sequential integer to rows within a partition, starting from 1.                                 |
+| `RANK()`       | Assigns a unique rank to rows within a partition, with gaps for tied values (e.g., 1, 2, 2, 4).                  |
+| `DENSE_RANK()` | Similar to `RANK()`, but without gaps for ties (e.g., 1, 2, 2, 3).                                               |
+| `PERCENT_RANK()` | Calculates the relative rank of a row within a partition as a percentage (between 0 and 1).                  |
+| `CUME_DIST()`  | Calculates the cumulative distribution of a value in a partition, showing the percentage of rows below or equal. |
+| `NTILE(n)`     | Divides rows in a partition into `n` equal groups, assigning a number (1 to `n`) to each group.                 |
+| `LAG()`        | Accesses data from the previous row in the partition, useful for comparisons.                                    |
+| `LEAD()`       | Accesses data from the next row in the partition, useful for comparisons.                                        |
+| `FIRST_VALUE()` | Returns the first value in an ordered partition.                                                               |
+| `LAST_VALUE()` | Returns the last value in an ordered partition.                                                                  |
+| `NTH_VALUE(n)` | Returns the `n`-th value in an ordered partition.                                                                |
+
 
 
 ### Concepts of kubernetes and how it manages containers
