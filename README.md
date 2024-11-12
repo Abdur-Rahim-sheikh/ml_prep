@@ -114,16 +114,16 @@ name of some kernels:
 ### Different Types of Optimization Algorithms and Their Use
 
 Let:
-- **`$ \theta $`** = parameters (or weights) of the model
-- **`$ \eta $`** = learning rate (controls the step size in updating parameters)
-- **`$ J(\theta) $`** = cost function (objective function we want to minimize)
-- **`$ \nabla_{\theta} J(\theta) $`** = gradient of the cost function with respect to parameters (direction to adjust `$ \theta $` to reduce `$ J(\theta) $`)
+- **$ \theta $** = parameters (or weights) of the model
+- **$ \eta $** = learning rate (controls the step size in updating parameters)
+- **$ J(\theta) $** = cost function (objective function we want to minimize)
+- **$ \nabla_{\theta} J(\theta) $** = gradient of the cost function with respect to parameters (direction to adjust $ \theta $` to reduce `$ J(\theta) $)
 
 ---
 
 #### 1. Gradient Descent
 - **Update Rule:**  
-  $ \theta := \theta - \eta \nabla_{\theta} J(\theta) $
+  $\theta := \theta - \eta \nabla_{\theta} J(\theta)$
 - **How it Uses the Cost Function:**  
   Calculates the gradient of the cost function over the entire dataset, updating $ \theta $ in the direction that decreases $ J(\theta) $. Suitable for smaller datasets due to the computational cost of calculating the gradient for all data points.
 
