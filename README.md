@@ -111,51 +111,97 @@ name of some kernels:
     - 1/n * Σmax(0, 1 - yi * ŷi)
     - Support Vector Machine (SVM)
 
-### Different types of optimization algorithms and use
-- **Gradient Descent**
-    - `θ := θ - η ∇_θ J(θ)` 
-    - Simple linear regression, small datasets 
-- **Stochastic Gradient Descent (SGD)** 
-    - `θ := θ - η ∇_θ J(θ; x^(i); y^(i))`
-    - Large datasets, online learning          
-- **Mini-batch Gradient Descent**
-    - `θ := θ - η (1/m) ∑_(i=1)^m ∇_θ J(θ; x^(i); y^(i))`
-    - Balancing between batch and stochastic gradient descent   
-- **Adagrad**
-    - `θ := θ - (η / (sqrt(G_t,ii) + ε)) ∇_θ J(θ)`
-    - Sparse data, natural language processing, computer vision 
-- **RMSprop**
-    - `E[g^2]_t := ρ E[g^2]_(t-1) + (1-ρ) g_t^2` <br> `θ := θ - (η / sqrt(E[g^2]_t + ε)) g_t`
-    - Recurrent neural networks, deep learning 
-- **Adam**
-    - `m_t := β_1 m_(t-1) + (1-β_1) g_t`, `m̂_t := m_t / (1-β_1^t)` <br> `v_t := β_2 v_(t-1) + (1-β_2) g_t^2` ,  `v̂_t := v_t / (1-β_2^t)` <br> `θ := θ - (η m̂_t / (sqrt(v̂_t) + ε))`
-    - Widely used in deep learning for its adaptive learning rate
-- **Adamax**    
-    - `m_t := β_1 m_(t-1) + (1-β_1) g_t` <br> `u_t := max(β_2 u_(t-1), |g_t|)` <br> `θ := θ - (η / u_t) m_t`
-    - Extension of Adam, used in deep learning 
+### Different Types of Optimization Algorithms and Their Use
+
+Let:
+- **`$ \theta $`** = parameters (or weights) of the model
+- **`$ \eta $`** = learning rate (controls the step size in updating parameters)
+- **`$ J(\theta) $`** = cost function (objective function we want to minimize)
+- **`$ \nabla_{\theta} J(\theta) $`** = gradient of the cost function with respect to parameters (direction to adjust `$ \theta $` to reduce `$ J(\theta) $`)
+
+---
+
+#### 1. Gradient Descent
+- **Update Rule:**  
+  $ \theta := \theta - \eta \nabla_{\theta} J(\theta) $
+- **How it Uses the Cost Function:**  
+  Calculates the gradient of the cost function over the entire dataset, updating $ \theta $ in the direction that decreases $ J(\theta) $. Suitable for smaller datasets due to the computational cost of calculating the gradient for all data points.
+
+#### 2. Stochastic Gradient Descent (SGD)
+- **Update Rule:**  
+  $ \theta := \theta - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)}) $
+- **How it Uses the Cost Function:**  
+  Computes the gradient based on one randomly chosen sample `(x^(i), y^(i))` at each iteration, providing faster, noisier updates. This approach is ideal for large datasets and allows for online learning.
+
+#### 3. Mini-batch Gradient Descent
+- **Update Rule:**  
+  $ \theta := \theta - \eta \frac{1}{m} \sum_{i=1}^m \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)}) $
+- **How it Uses the Cost Function:**  
+  Computes the average gradient over a subset of the dataset (mini-batch), balancing the stability of batch gradient descent with the efficiency of SGD. Reduces the cost function using the average gradient over the mini-batch.
+
+#### 4. Adagrad
+- **Update Rule:**  
+  $ \theta := \theta - \frac{\eta}{\sqrt{G_{t, ii}} + \epsilon} \nabla_{\theta} J(\theta) $
+- **How it Uses the Cost Function:**  
+  Adapts the learning rate based on previous gradients accumulated in $ G_t $. As $ \theta $ approaches a minimum, the effective learning rate decreases, making it well-suited for sparse data like NLP or computer vision tasks. $ \epsilon $ prevents division by zero.
+
+#### 5. RMSprop
+- **Update Rule:**  
+  $ E[g^2]_t := \rho E[g^2]_{t-1} + (1 - \rho) g_t^2 $
+  $ \theta := \theta - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_t $
+- **How it Uses the Cost Function:**  
+  Keeps a moving average of squared gradients to adapt the learning rate. This helps in minimizing the cost function, especially in non-stationary tasks (like RNNs), by focusing updates based on recent gradients.
+
+#### 6. Adam
+- **Update Rule:**  
+  $ m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t $, ` `$ \hat{m}_t := \frac{m_t}{1 - \beta_1^t} $
+  $ v_t := \beta_2 v_{t-1} + (1 - \beta_2) g_t^2 $, ` `$ \hat{v}_t := \frac{v_t}{1 - \beta_2^t} $
+  $ \theta := \theta - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $
+- **How it Uses the Cost Function:**  
+  Combines momentum (moving average of past gradients) and RMSprop (squared gradient scaling) for adaptive learning rates. By adjusting rates based on the first and second moments, Adam efficiently minimizes the cost function and is widely used in deep learning.
+
+#### 7. Adamax
+- **Update Rule:**  
+  $ m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t $
+  $ u_t := \max(\beta_2 u_{t-1}, |g_t|) $
+  $ \theta := \theta - \frac{\eta}{u_t} m_t $
+- **How it Uses the Cost Function:**  
+  An extension of Adam, Adamax uses the infinity norm for normalization. `$ u_t $` provides adaptive learning rates, adjusting to the maximum gradient, making it effective for minimizing the cost function in deep learning tasks with large, sparse gradients.
+
+---
+
+Each algorithm's update rule moves $ \theta $ in the direction that minimizes the cost function, with different strategies for adapting the learning rate and gradient usage based on dataset size and task complexity.
 
 ### Different types of activation functions and use
-- **Sigmoid**
-    - `σ(x) = 1 / (1 + exp(-x))`
-    -  `Output layer` of binary classification models
-- **Softmax**
-    - `softmax(x_i) = exp(x_i) / Σ_j exp(x_j)`
-    - `Output layer` of multiclass classification models
-- **Tanh**
-    - `tanh(x) = 2σ(2x) - 1` = (exp(x) - exp(-x)) / (exp(x) + exp(-x))
-    - Hidden layers of neural networks
-- **ReLU**
-    - `ReLU(x) = max(0, x)`
-    - Hidden layers of neural networks (most popular for hidden)
-- **Leaky ReLU**
-    - `LeakyReLU(x) = max(αx, x)`
-    - Hidden layers of neural networks
-- **Swish**
-    - `Swish(x) = x * sigmoid(x)`
-    - Hidden layers of neural networks
-- **GELU**
-    - `GELU(x) = 0.5x(1 + tanh(sqrt(2/pi)(x + 0.044715x^3)))`
-    - Hidden layers of neural networks
+1. **Sigmoid**
+    - **Formula**: $ \sigma(x) = \frac{1}{1 + e^{-x}} $
+    - **Use**: Often used in the output layer for binary classification models to produce probabilities between 0 and 1.
+
+2. **Softmax**
+    - **Formula**: $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}} $
+    - **Use**: Typically used in the output layer for multiclass classification models. It converts logits into probabilities for each class.
+
+3. **Tanh (Hyperbolic Tangent)**
+    - **Formula**: $ \text{tanh}(x) = 2\sigma(2x) - 1 = \frac{e^x - e^{-x}}{e^x + e^{-x}} $
+    - **Use**: Commonly used in hidden layers of neural networks. Produces outputs between -1 and 1, which helps with symmetry around zero.
+
+4. **ReLU (Rectified Linear Unit)**
+    - **Formula**: $ \text{ReLU}(x) = \max(0, x) $
+    - **Use**: Widely used in hidden layers, especially in deep networks, because it helps prevent the "vanishing gradient" problem.
+
+5. **Leaky ReLU**
+    - **Formula**: $ \text{LeakyReLU}(x) = \max(\alpha x, x) $ (where $ \alpha $ is a small constant, often 0.01)
+    - **Use**: Used in hidden layers to address the problem of "dying ReLUs" by allowing a small gradient when $ x < 0 $.
+
+6. **Swish**
+    - **Formula**: $ \text{Swish}(x) = x \cdot \sigma(x) $
+    - **Use**: Often used in hidden layers for a smoother alternative to ReLU, shown to work well in some deep learning models.
+
+7. **GELU (Gaussian Error Linear Unit)**
+    - **Formula**: $ \text{GELU}(x) = 0.5x(1 + \text{tanh}(\sqrt{2/\pi} (x + 0.044715x^3))) $
+    - **Use**: Used in hidden layers, particularly in transformer architectures like BERT, to give a smoother, probabilistic alternative to ReLU.
+
+
 
 ### Calculating matrix output shape in CNN
 - The formula to calculate the output shape of a convolutional layer is given by:
