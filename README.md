@@ -117,7 +117,7 @@ Let:
 - $\theta$ = parameters (or weights) of the model
 - $\eta$ = learning rate (controls the step size in updating parameters)
 - $J(\theta)$ = cost function (objective function we want to minimize)
-- $\nabla_{\theta} J(\theta)$ = gradient of the cost function with respect to parameters (direction to adjust $\theta$ `to reduce` $J(\theta)$)
+- $\nabla_{\theta} J(\theta)$ = gradient of the cost function with respect to parameters (direction to adjust $\theta$ `to reduce` $J(\theta)$ )
 
 - **Gradient Descent (GD)**
     - **Equation:**  
@@ -164,7 +164,7 @@ Let:
 
 - **RMSProp (Root Mean Square Propagation)**
     - **Equation:**  
-      $E[g^2]_t = \beta E[g^2]_{t-1} + (1 - \beta)(\nabla J(\theta))^2$  
+      $E[g^2]_t$ = $\beta E[g^2]_{t-1} + (1 - \beta)(\nabla J(\theta))^2$  
       $\theta = \theta - \alpha \frac{\nabla J(\theta)}{\sqrt{E[g^2]_t + \epsilon}}$
     - **Description:**  
       Adapts the learning rate for each parameter based on the average of squared gradients, helping to avoid large updates and stabilize training.
