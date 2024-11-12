@@ -171,7 +171,7 @@ Let:
     - **How Cost Function Helps:**  
       The cost function gradient is squared and averaged to dynamically adjust the learning rate, stabilizing updates and preventing divergence in deep networks.
 
-Each algorithm's update rule moves $ \theta $ in the direction that minimizes the cost function, with different strategies for adapting the learning rate and gradient usage based on dataset size and task complexity.
+Each algorithm's update rule moves $\theta$ in the direction that minimizes the cost function, with different strategies for adapting the learning rate and gradient usage based on dataset size and task complexity.
 
 ### Different types of activation functions and use
 1. **Sigmoid**
@@ -191,7 +191,7 @@ Each algorithm's update rule moves $ \theta $ in the direction that minimizes th
     - **Use**: Widely used in hidden layers, especially in deep networks, because it helps prevent the "vanishing gradient" problem.
 
 5. **Leaky ReLU**
-    - **Formula**: $\text{LeakyReLU}(x) = \max(\alpha x, x)$ (where $\alpha$ is a small constant, often 0.01)
+    - **Formula**: $\text{LeakyReLU}(x)$ = $\max(\alpha x, x)$ (where $\alpha$ is a small constant, often 0.01)
     - **Use**: Used in hidden layers to address the problem of "dying ReLUs" by allowing a small gradient when $x < 0$.
 
 6. **Swish**
