@@ -117,59 +117,59 @@ Let:
 - $\theta$ = parameters (or weights) of the model
 - $\eta$ = learning rate (controls the step size in updating parameters)
 - $J(\theta)$ = cost function (objective function we want to minimize)
-- $\nabla_{\theta} J(\theta)$ = gradient of the cost function with respect to parameters (direction to adjust $\theta$ ` to reduce ` $J(\theta)$)
+- $\nabla_{\theta} J(\theta)$ = gradient of the cost function with respect to parameters (direction to adjust $\theta$ `to reduce` $J(\theta)$)
 
----
+- **Gradient Descent (GD)**
+    - **Equation:**  
+      $\theta = \theta - \alpha \nabla J(\theta)$
+    - **Description:**  
+      Updates parameters ($\theta$) by moving them in the direction of the negative gradient of the cost function $J(\theta)$ with respect to $\theta$, scaled by the learning rate ($\alpha$).
+    - **How Cost Function Helps:**  
+      The cost function $J(\theta)$ provides a measure of error or loss, which gradient descent minimizes by iteratively adjusting $\theta$ in the opposite direction of the gradient. Lowering the cost function value improves model performance.
 
-#### 1. Gradient Descent
-- **Update Rule:**  
-  $\theta := \theta - \eta \nabla_{\theta} J(\theta)$
-- **How it Uses the Cost Function:**  
-  Calculates the gradient of the cost function over the entire dataset, updating $\theta$ in the direction that decreases $J(\theta)$. Suitable for smaller datasets due to the computational cost of calculating the gradient for all data points.
+- **Stochastic Gradient Descent (SGD)**
+    - **Equation:**  
+      $\theta = \theta - \alpha \nabla J(\theta; x^{(i)}, y^{(i)})$
+    - **Description:**  
+      Similar to gradient descent, but updates parameters for each individual training example $(x^{(i)}, y^{(i)})$ rather than the entire dataset, making it more computationally efficient.
+    - **How Cost Function Helps:**  
+      The cost function guides each step, as minimizing it iteratively on small data samples ensures faster convergence and helps avoid getting stuck in local minima.
 
-#### 2. Stochastic Gradient Descent (SGD)
-- **Update Rule:**  
-  $\theta := \theta - \eta \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$
-- **How it Uses the Cost Function:**  
-  Computes the gradient based on one randomly chosen sample `(x^(i), y^(i))` at each iteration, providing faster, noisier updates. This approach is ideal for large datasets and allows for online learning.
+- **Mini-Batch Gradient Descent**
+    - **Equation:**  
+      $\theta = \theta - \alpha \nabla J(\theta; B)$
+    - **Description:**  
+      A compromise between GD and SGD, updating parameters based on a small "mini-batch" of data $B$, instead of the entire dataset or a single instance.
+    - **How Cost Function Helps:**  
+      Using mini-batches provides a more accurate gradient estimate, allowing a smoother and faster convergence towards the cost function's minimum.
 
-#### 3. Mini-batch Gradient Descent
-- **Update Rule:**  
-  $\theta := \theta - \eta \frac{1}{m} \sum_{i=1}^m \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})$
-- **How it Uses the Cost Function:**  
-  Computes the average gradient over a subset of the dataset (mini-batch), balancing the stability of batch gradient descent with the efficiency of SGD. Reduces the cost function using the average gradient over the mini-batch.
+- **Momentum**
+    - **Equation:**  
+      $v = \beta v + \nabla J(\theta)$  
+      $\theta = \theta - \alpha v$
+    - **Description:**  
+      Adds a "momentum" term to the parameter update, where $\beta$ controls the contribution of previous gradients, helping to speed up convergence.
+    - **How Cost Function Helps:**  
+      The cost function’s gradient is used to accumulate momentum in the update, smoothing out noisy gradients and enabling faster movement towards the optimum.
 
-#### 4. Adagrad
-- **Update Rule:**  
-  $\theta := \theta - \frac{\eta}{\sqrt{G_{t, ii}} + \epsilon} \nabla_{\theta} J(\theta)$
-- **How it Uses the Cost Function:**  
-  Adapts the learning rate based on previous gradients accumulated in $G_t$. As $\theta$ approaches a minimum, the effective learning rate decreases, making it well-suited for sparse data like NLP or computer vision tasks. $\epsilon$ prevents division by zero.
+- **Adam (Adaptive Moment Estimation)**
+    - **Equation:**  
+      $m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla J(\theta)$  
+      $v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla J(\theta))^2$  
+      $\theta = \theta - \alpha \frac{m_t}{\sqrt{v_t} + \epsilon}$
+    - **Description:**  
+      Combines momentum and adaptive learning rate, using first ($m_t$) and second moment ($v_t$) estimates of gradients to adjust the learning rate for each parameter adaptively.
+    - **How Cost Function Helps:**  
+      The cost function's gradient influences both moment estimates, guiding the optimization with adaptive updates to achieve faster convergence and reduce oscillations near the minimum.
 
-#### 5. RMSprop
-- **Update Rule:**  
-  $E[g^2]_t := \rho E[g^2]_{t-1} + (1 - \rho) g_t^2$
-  $\theta := \theta - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_t$
-- **How it Uses the Cost Function:**  
-  Keeps a moving average of squared gradients to adapt the learning rate. This helps in minimizing the cost function, especially in non-stationary tasks (like RNNs), by focusing updates based on recent gradients.
-
-#### 6. Adam
-- **Update Rule:**  
-  $m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t$, ` `$\hat{m}_t := \frac{m_t}{1 - \beta_1^t}$
-  $v_t := \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$, ` `$\hat{v}_t := \frac{v_t}{1 - \beta_2^t}$
-  $\theta := \theta - \frac{\eta \hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$
-
-- **How it Uses the Cost Function:**  
-  Combines momentum (moving average of past gradients) and RMSprop (squared gradient scaling) for adaptive learning rates. By adjusting rates based on the first and second moments, Adam efficiently minimizes the cost function and is widely used in deep learning.
-
-#### 7. Adamax
-- **Update Rule:**  
-  $ m_t := \beta_1 m_{t-1} + (1 - \beta_1) g_t $
-  $ u_t := \max(\beta_2 u_{t-1}, |g_t|) $
-  $ \theta := \theta - \frac{\eta}{u_t} m_t $
-- **How it Uses the Cost Function:**  
-  An extension of Adam, Adamax uses the infinity norm for normalization. `$ u_t $` provides adaptive learning rates, adjusting to the maximum gradient, making it effective for minimizing the cost function in deep learning tasks with large, sparse gradients.
-
----
+- **RMSProp (Root Mean Square Propagation)**
+    - **Equation:**  
+      $E[g^2]_t = \beta E[g^2]_{t-1} + (1 - \beta)(\nabla J(\theta))^2$  
+      $\theta = \theta - \alpha \frac{\nabla J(\theta)}{\sqrt{E[g^2]_t + \epsilon}}$
+    - **Description:**  
+      Adapts the learning rate for each parameter based on the average of squared gradients, helping to avoid large updates and stabilize training.
+    - **How Cost Function Helps:**  
+      The cost function gradient is squared and averaged to dynamically adjust the learning rate, stabilizing updates and preventing divergence in deep networks.
 
 Each algorithm's update rule moves $ \theta $ in the direction that minimizes the cost function, with different strategies for adapting the learning rate and gradient usage based on dataset size and task complexity.
 
