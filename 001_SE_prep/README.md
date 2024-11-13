@@ -10,6 +10,7 @@
 7. [Concepts of kubernetes and how it manages containers](#concepts-of-kubernetes-and-how-it-manages-containers)
 8. [Pointer vs Reference](#pointer-vs-reference)
 9. [Heap memory structure vs Stack memory structure](#heap-memory-structure-vs-stack-memory-structure)
+10. [An interesting problem in c++](#an-interesting-problem-in-c++)
 
 ### What are literals in Python?
 Literal's in Python is defined as a data which is given in a variable or constant. Python supports the following 5 types of literals:
@@ -147,3 +148,16 @@ int &r = a; // r is a reference to a
     - `Before c++11`, we need to manually deallocate the memory allocated in heap using `delete` keyword. But after c++11, we can use smart pointers like `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr` to automatically deallocate the memory.
     - In `python`, each object has a reference count, and when the reference count drops to zero, the memory is deallocated automatically by the garbage collector.
     - `Java` and `C#`, use a technique where the garbage collector periodically scans the heap memory to identify and deallocate objects that are no longer in use.
+
+
+### An interesting problem in c++
+```cpp
+char ch = 1;
+
+while (ch < 500) {
+    printf("%d ", ch);
+    ch++;
+}
+```
+
+What's funny here is, this will run, but as char accepts from -128 to 127, it will print from  1, 2, ..., 127, -128, -127, ..., -1,0, 1 and so on infinitely. This is because of the overflow of char data type. 
