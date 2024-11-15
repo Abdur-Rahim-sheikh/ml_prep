@@ -11,6 +11,8 @@
 8. [Pointer vs Reference](#pointer-vs-reference)
 9. [Heap memory structure vs Stack memory structure](#heap-memory-structure-vs-stack-memory-structure)
 10. [An interesting problem in c++](#an-interesting-problem-in-c++)
+11. [What mock do in pytest](#what-mock-do-in-pytest)
+
 
 ### What are literals in Python?
 Literal's in Python is defined as a data which is given in a variable or constant. Python supports the following 5 types of literals:
@@ -161,3 +163,8 @@ while (ch < 500) {
 ```
 
 What's funny here is, this will run, but as char accepts from -128 to 127, it will print from  1, 2, ..., 127, -128, -127, ..., -1,0, 1 and so on infinitely. This is because of the overflow of char data type. 
+
+### What mock do in pytest
+- Mocking is a technique used in testing to replace a real object with a fake object that can be controlled and inspected during the test.
+- In pytest `@mock.patch('some_function_path')` means that whenever `some_function_path` is called in the entire test from anywhere, it will be replaced with a mock object.
+- `mock.Mock()` is a class that can be used to create mock objects with custom behavior and attributes.
