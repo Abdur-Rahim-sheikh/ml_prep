@@ -28,7 +28,7 @@ def test_divide_by_zero():
 
 @pytest.mark.slow
 def test_very_slow():
-    time.sleep(5)
+    time.sleep(0.2)
     result = my_functions.divide(10, 5)
     assert result == 2
 
