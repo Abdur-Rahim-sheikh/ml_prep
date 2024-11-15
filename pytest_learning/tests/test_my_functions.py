@@ -1,5 +1,5 @@
 import pytest
-
+import time
 import pytest_learning.source.my_functions as my_functions
 
 
@@ -24,3 +24,10 @@ def test_divide():
 def test_divide_by_zero():
     with pytest.raises(ZeroDivisionError):
         my_functions.divide(4, 0)
+
+
+@pytest.mark.slow
+def test_very_slow():
+    time.sleep(5)
+    result = my_functions.divide(10, 5)
+    assert result == 2
