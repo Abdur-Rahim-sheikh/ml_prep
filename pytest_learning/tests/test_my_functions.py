@@ -11,6 +11,11 @@ def test_add_parametrized(number_one, number_two, expected_result):
     assert result == expected_result, "Addition failed"
 
 
+def test_add_strings():
+    result = my_functions.add("Hello", "World")
+    assert result == "HelloWorld", "Addition failed"
+
+
 def test_divide():
     result = my_functions.divide(4, 2)
     assert result == 2, "Division failed"
