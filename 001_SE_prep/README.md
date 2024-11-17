@@ -12,6 +12,9 @@
 9. [Heap memory structure vs Stack memory structure](#heap-memory-structure-vs-stack-memory-structure)
 10. [An interesting problem in c++](#an-interesting-problem-in-c++)
 11. [What mock do in pytest](#what-mock-do-in-pytest)
+12. [What is the purpose of an index in PostgreSQL, and how does it improve query performance?](#what-is-the-purpose-of-an-index-in-postgresql-and-how-does-it-improve-query-performance)
+13. [Explain the ACID properties of transactions in PostgreSQL. Write an example demonstrating how to use BEGIN, COMMIT, and ROLLBACK](#explain-the)
+14. [How can you store and query JSON data in PostgreSQL? Given a products table with a column details of type JSONB, write a query to find products where the category key in the JSON contains the value electronics](#how-can-you-store-and-query-json-data-in-postgresql-given-a-products-table-with-a-column-details-of-type-jsonb-write-a-query-to-find-products-where-the-category-key-in-the-json-contains-the-value-electronics)
 
 
 ### What are literals in Python?
@@ -168,3 +171,44 @@ What's funny here is, this will run, but as char accepts from -128 to 127, it wi
 - Mocking is a technique used in testing to replace a real object with a fake object that can be controlled and inspected during the test.
 - In pytest `@mock.patch('some_function_path')` means that whenever `some_function_path` is called in the entire test from anywhere, it will be replaced with a mock object.
 - `mock.Mock()` is a class that can be used to create mock objects with custom behavior and attributes.
+
+
+### What is the purpose of an index in PostgreSQL, and how does it improve query performance?
+**What is the purpose of an index in PostgreSQL?**
+- An index in PostgreSQL helps speed up data retrieval operations by reducing the amount of data PostgreSQL needs to scan. Without an index, the database performs a sequential scan over the entire table, which can be slow for large datasets.
+
+**Example of creating an index:**
+```sql
+CREATE INDEX idx_users_last_name ON users(last_name);
+```
+
+
+### Explain the ACID properties of transactions in PostgreSQL. Write an example demonstrating how to use BEGIN, COMMIT, and ROLLBACK
+1. **Atomicity**: A transaction is atomic, meaning that it either completes in its entirety or is fully rolled back. If any part of the transaction fails, the entire transaction is rolled back.
+2. **Consistency**: A transaction must leave the database in a consistent state. If the database was consistent before the transaction, it must remain consistent after the transaction.
+3. **Isolation**: Transactions should be isolated from each other, meaning that the changes made by one transaction should not be visible to other transactions until the changes are committed.
+4. **Durability**: Once a transaction is committed, the changes made by the transaction should be permanent and survive system failures.
+
+**Example of using BEGIN, COMMIT, and ROLLBACK in PostgreSQL:**
+```sql
+-- Start a transaction
+BEGIN;
+
+-- Perform some operations
+UPDATE accounts SET balance = balance - 500 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 500 WHERE account_id = 2;
+
+-- Commit the transaction if everything is successful
+COMMIT;
+
+-- If an error occurs, rollback the transaction
+ROLLBACK;
+```
+
+### How can you store and query JSON data in PostgreSQL? Given a products table with a column details of type JSONB, write a query to find products where the category key in the JSON contains the value electronics
+-  PostgreSQL supports the JSON and JSONB data types for storing `JSON` data. `JSONB` is preferred for better performance with indexing and querying
+Example Query: Given a products table with a column details of type JSONB, this query retrieves products where the category key has the value electronics:
+```sql
+SELECT * FROM products
+WHERE details->>'category' = 'electronics';
+```
