@@ -43,7 +43,7 @@ def test_add_student_success(potions_class):
 
 def test_add_student_too_many(potions_class):
     # Add students to exceed the limit
-    for i in range(8):
+    for i in range(7):
         potions_class.add_student(Student(f"Student {i}"))
     with pytest.raises(TooManyStudents):
         potions_class.add_student(Student("Neville Longbottom"))

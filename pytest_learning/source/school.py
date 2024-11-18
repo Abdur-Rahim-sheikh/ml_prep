@@ -9,10 +9,9 @@ class Classroom:
         self.course_title = course_title
 
     def add_student(self, student):
-        if len(self.students) <= 10:
-            self.students.append(student)
-        else:
+        if len(self.students) >= 10:
             raise TooManyStudents
+        self.students.append(student)
 
     def remove_student(self, name):
         for student in self.students:
