@@ -35,18 +35,23 @@ def calculate_accuracy(y_true, y_pred):
 ### Question 4: What are activation functions in neural networks? Name a few commonly used ones.
 Answer: Activation functions introduce non-linearity into a neural network, enabling it to learn complex patterns. Common activation functions include:
 
-Sigmoid
-ReLU (Rectified Linear Unit)
-Tanh
-Softmax
-Section 2: Cloud Platforms
-Question 5: What are the benefits of using cloud platforms for deploying machine learning models?
+- Sigmoid
+    - $f(x) = \frac{1}{1 + e^{-x}}$
+- ReLU (Rectified Linear Unit)
+    - $f(x) = \max(0, x)$
+- Tanh
+    - $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$
+- Softmax
+    - $f(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}$
+
+## Section 2: Cloud Platforms
+### Question 5: What are the benefits of using cloud platforms for deploying machine learning models?
 Answer:
 
-Scalability: Easily scale resources as per the workload.
-Cost-Effectiveness: Pay-as-you-go pricing.
-Integration: Access to tools like storage, monitoring, and APIs.
-High Availability: Minimized downtime due to redundant systems.
+- Scalability: Easily scale resources as per the workload.
+- Cost-Effectiveness: Pay-as-you-go pricing.
+- Integration: Access to tools like storage, monitoring, and APIs.
+- High Availability: Minimized downtime due to redundant systems.
 
 ### Question 6: Explain the concept of serverless architecture. Give an example.
 Answer:
@@ -78,8 +83,13 @@ Answer: Prompt engineering involves crafting precise and effective inputs (promp
 ### Question 9: What are few-shot and zero-shot learning in prompt engineering?
 Answer:
 
-Zero-shot learning: The model is tasked with solving a problem without prior examples.
-Few-shot learning: The model is given a few examples of the task to guide its response.
+- Zero-shot learning: The model is tasked with solving a problem without prior examples.
+    - Example: Asking a model to translate a language it hasn't seen before.
+    - use case: translation, summarization
+- Few-shot learning: The model is given a few examples of the task to guide its response.
+    - Example: Providing a few examples of summarization to generate a summary.
+    - use case: text generation, question answering
+
 ### Question 10: Write an example prompt for generating Python code that calculates the factorial of a number using recursion.
 Prompt:
 "Write a Python function to calculate the factorial of a number using recursion."
@@ -112,9 +122,8 @@ def is_palindrome(s):
 # Example usage:
 # print(is_palindrome("radar"))  # True
 # print(is_palindrome("hello"))  # False
-
-### Question 13: Implement a simple linear regression model from scratch in Python.
 ```
+### Question 13: Implement a simple linear regression model from scratch in Python.
 
 ```python
 import numpy as np
