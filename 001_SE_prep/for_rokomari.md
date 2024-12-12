@@ -74,6 +74,13 @@ def upload_file_to_s3(file_name, bucket_name, object_name=None):
 # Example usage:
 # upload_file_to_s3('test.txt', 'my-bucket')
 ```
+
+### Question: explain DKIM, SPF, and DMARC in the context of email security.
+Answer:
+- **DKIM (DomainKeys Identified Mail)**: A method to validate the authenticity of email messages. It uses cryptographic signatures to verify that the email was sent from an authorized domain.
+- **SPF (Sender Policy Framework)**: A protocol that specifies which IP addresses are allowed to send emails on behalf of a domain. It helps prevent email spoofing.
+- **DMARC (Domain-based Message Authentication, Reporting, and Conformance)**: A policy that builds on SPF and DKIM to provide email authentication and reporting. It helps prevent email phishing and fraud.
+
 Section 3: Prompt Engineering
 
 
