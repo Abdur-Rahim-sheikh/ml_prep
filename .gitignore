@@ -6,4 +6,4 @@
 *__pycache__
 */dataset/*
 *.pytest_cache
-*runs/*
+*/runs/*
