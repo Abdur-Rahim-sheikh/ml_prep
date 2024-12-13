@@ -37,7 +37,7 @@ also...
 1) Simplify Model
     - Use a less complex model to prevent the model from capturing noise in the training data.
 2) Cross-Validation
-    - Use cross-validation techniques to ensure that the model generalizes well to unseen data.
+    - Use cross-validation techniques to ensure that the model generalizes well to unseen data. Cause cross-validation takes the average of the model's performance on different subsets of the training data.
 3) Regularization Techniques
     - Apply regularization methods (like L1, L2 regularization) to penalize large weights and prevent the model from fitting the training data too closely.
 4) Data Augmentation
