@@ -7,3 +7,4 @@
 */dataset/*
 *.pytest_cache
 */runs/*
+pytorch_geometric/models/*
