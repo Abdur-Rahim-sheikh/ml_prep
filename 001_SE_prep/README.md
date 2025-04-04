@@ -17,6 +17,7 @@
 13. [Explain the ACID properties of transactions in PostgreSQL. Write an example demonstrating how to use BEGIN, COMMIT, and ROLLBACK](#explain-the)
 14. [How can you store and query JSON data in PostgreSQL? Given a products table with a column details of type JSONB, write a query to find products where the category key in the JSON contains the value electronics](#how-can-you-store-and-query-json-data-in-postgresql-given-a-products-table-with-a-column-details-of-type-jsonb-write-a-query-to-find-products-where-the-category-key-in-the-json-contains-the-value-electronics)
 15. [Abstract class vs Interface](#abstract-class-vs-interface)
+16. [Advantages and disadvantages of using a microservices architecture](#advantages-and-disadvantages-of-using-a-microservices-architecture)
 
 ### What are literals in Python?
 
@@ -237,3 +238,19 @@ WHERE details->>'category' = 'electronics';
 | Fields/Variables     | Can have fields/variables.                              | Can only have constants                    |
 | Access Modifiers     | Can have access modifiers (public, private, protected). | All methods are public by default.         |
 | Multiple Inheritance | A class can extend only one abstract class.             | A class can implement multiple interfaces. |
+
+### Advantages and disadvantages of using a microservices architecture
+
+1. Advantages:
+
+- Scalability: Microservices can be scaled independently, allowing for better resource utilization and performance.
+- Flexibility: Different microservices can be developed using different technologies and programming languages, allowing teams to choose the best tools for their needs.
+- Resilience: If one microservice fails, it does not necessarily bring down the entire system, improving overall system reliability.
+- Faster development: Teams can work on different microservices simultaneously, leading to faster development cycles and quicker time to market.
+
+2. Disadvantages:
+
+- Complexity: Microservices introduce additional complexity in terms of deployment, communication, and data management.
+- Overhead: Each microservice requires its own resources, which can lead to increased overhead and resource consumption.
+- Data consistency: Ensuring data consistency across multiple microservices can be challenging, especially when dealing with distributed transactions.
+- Monitoring and debugging: Monitoring and debugging microservices can be more complex than monolithic applications, as issues may arise from interactions between multiple services.
