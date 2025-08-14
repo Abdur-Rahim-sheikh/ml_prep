@@ -18,6 +18,7 @@
 14. [How can you store and query JSON data in PostgreSQL? Given a products table with a column details of type JSONB, write a query to find products where the category key in the JSON contains the value electronics](#how-can-you-store-and-query-json-data-in-postgresql-given-a-products-table-with-a-column-details-of-type-jsonb-write-a-query-to-find-products-where-the-category-key-in-the-json-contains-the-value-electronics)
 15. [Abstract class vs Interface](#abstract-class-vs-interface)
 16. [Advantages and disadvantages of using a microservices architecture](#advantages-and-disadvantages-of-using-a-microservices-architecture)
+17. [Django vs Fastapi](#django-vs-fastapi)
 
 ### What are literals in Python?
 
@@ -254,3 +255,19 @@ WHERE details->>'category' = 'electronics';
 - Overhead: Each microservice requires its own resources, which can lead to increased overhead and resource consumption.
 - Data consistency: Ensuring data consistency across multiple microservices can be challenging, especially when dealing with distributed transactions.
 - Monitoring and debugging: Monitoring and debugging microservices can be more complex than monolithic applications, as issues may arise from interactions between multiple services.
+
+### Django vs Fastapi
+
+- **Features** of Django
+
+  - It provides a good sense of security by avoiding common threats like cross-site scripting, SQL injection, etc.
+  - It provides a user authentication system that helps in managing accounts and passwords
+  - Django projects are very suitable for large scale projects
+  - Django is also believed to be a versatile framework, giving developers the flexibility to build various types of applications
+  - Django provides admin portal out of the box
+
+- **Features** of FastAPI
+  - FastAPI's documentation is interactive, simple, intuitive and offers great editor support
+  - Early validation
+  - Default asynchronous, cause it's built with `ASGI`
+  - Dependency injection is also one of the best features of FastAPI
