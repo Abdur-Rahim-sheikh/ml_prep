@@ -19,6 +19,7 @@
 15. [Abstract class vs Interface](#abstract-class-vs-interface)
 16. [Advantages and disadvantages of using a microservices architecture](#advantages-and-disadvantages-of-using-a-microservices-architecture)
 17. [Django vs Fastapi](#django-vs-fastapi)
+18. [HTTP vs gRPC vs Message Queue Broker](#http-vs-grpc-vs-message-queue-broker)
 
 ### What are literals in Python?
 
@@ -271,3 +272,26 @@ WHERE details->>'category' = 'electronics';
   - Early validation
   - Default asynchronous, cause it's built with `ASGI`
   - Dependency injection is also one of the best features of FastAPI
+
+### HTTP vs gRPC vs Message Queue Broker
+
+- HTTP
+  - Ease of understanding
+  - Statelessness
+  - Caching Benefits
+    - Response can be cached for certain period or until any data
+      changes happen. Systems like `Redis` is widely used for caching.
+- gRPC
+  - Efficiency
+    - it has very low latency and high throughput communications. Ideal for lightweight systems
+  - Polyglot Nature
+    - allowing microservices to run on different technologies.
+  - Real time communication
+    - Bidirectional streaming and realtime communication
+  - Language-agnostic service contract
+    - works like a universal translator for microservices. It defines
+      how they communicate, no matter their programming language, thanks to Protocol Buffers that generate code for everyone, leading to efficient and clear collaboration across software kingdoms.
+- Message Queue Broker
+  - Scalability
+  - Dependency inversion
+  - This setup is meant for long running systems not suitable for real-time communications.
