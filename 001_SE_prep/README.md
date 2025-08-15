@@ -20,6 +20,7 @@
 16. [Advantages and disadvantages of using a microservices architecture](#advantages-and-disadvantages-of-using-a-microservices-architecture)
 17. [Django vs Fastapi](#django-vs-fastapi)
 18. [HTTP vs gRPC vs Message Queue Broker](#http-vs-grpc-vs-message-queue-broker)
+19. [Rate Limiting](#rate-limiting)
 
 ### What are literals in Python?
 
@@ -295,3 +296,29 @@ WHERE details->>'category' = 'electronics';
   - Scalability
   - Dependency inversion
   - This setup is meant for long running systems not suitable for real-time communications.
+
+### Rate Limiting
+
+Rate limiting restricts the number of API requests any user, IP, or service can make in a certain period (e.g., 100 requests/minute). Any additional requests beyond this threshold can be delayed, throttled or rejected with an HTTP 429 response.
+
+**This Prevents**:
+
+- Brute force attack
+- API abuse & scrapping
+- Server overload due to traffic spikes
+- Unexpected cloud costs
+
+**Common rate limiting strategies**
+
+1. Token Bucket
+
+- Every user has a bucket of token for a period, if it becomes empty user cannot make new request
+
+2. Leaky bucket
+
+- Similar to buket, but let it has a hole below the buket and 10 token drops from here each second. So if the buket has 100 token limit but leak of 10token/s then we cannot utilize more than 10 seconds even if we only used 25 token as other token dropped.
+- It enforces a constant rate, useful for servers with limited resources.
+
+3. Fixed window counter
+4. Sliding window log
+5. Sliding window counter
