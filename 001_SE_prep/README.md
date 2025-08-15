@@ -21,6 +21,7 @@
 17. [Django vs Fastapi](#django-vs-fastapi)
 18. [HTTP vs gRPC vs Message Queue Broker](#http-vs-grpc-vs-message-queue-broker)
 19. [Rate Limiting](#rate-limiting)
+20. [REST API versioning](#rest-api-versioning)
 
 ### What are literals in Python?
 
@@ -322,3 +323,15 @@ Rate limiting restricts the number of API requests any user, IP, or service can 
 3. Fixed window counter
 4. Sliding window log
 5. Sliding window counter
+
+### REST API versioning
+
+There are basically two types of api versioning
+
+1. URI versioning
+
+- http://api.example.com/v1/users
+
+2. header versioning
+
+- Using accept header (i.e. Accept-Version: v1)
