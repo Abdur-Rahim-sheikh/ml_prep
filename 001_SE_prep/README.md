@@ -22,6 +22,7 @@
 18. [HTTP vs gRPC vs Message Queue Broker](#http-vs-grpc-vs-message-queue-broker)
 19. [Rate Limiting](#rate-limiting)
 20. [REST API versioning](#rest-api-versioning)
+21. [Django Request/Response Cycle](#django-request-response-cycle)
 
 ### What are literals in Python?
 
@@ -335,3 +336,21 @@ There are basically two types of api versioning
 2. header versioning
 
 - Using accept header (i.e. Accept-Version: v1)
+
+### Django Request/Response Cycle
+
+```mermaid
+graph TD;
+c[CLIENT] --> w[WEB SERVER]
+w --> WSGI
+WSGI --> R[REQUEST _middleware_]
+R --> URL[URL RESOLUTION]
+URL --> VIEW[VIEW _middleware_]
+VIEW --> RESPONSE[RESPONSE _middleware_]
+VIEW -.-> EXCEPTION[EXCEPTION _middleware_]
+EXCEPTION -.-> RESPONSE
+RESPONSE --> WSGI
+WSGI --> w
+w --> c
+
+```
