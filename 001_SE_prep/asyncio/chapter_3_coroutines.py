@@ -15,10 +15,11 @@ async def keep_printing(name: str = "") -> None:
 
 async def async_main() -> None:
     try:
+        gather_coroutine = asyncio.gather(
+            keep_printing("First"), keep_printing("Second"), keep_printing("Third")
+        )
         await asyncio.wait_for(
-            asyncio.gather(
-                keep_printing("First"), keep_printing("Second"), keep_printing("Third")
-            ),
+            gather_coroutine,
             5,
         )
     except asyncio.TimeoutError:
@@ -39,5 +40,5 @@ async def async_main_wrong() -> None:
 
 
 if __name__ == "__main__":
-    # asyncio.run(async_main())
-    asyncio.run(async_main_wrong())
+    asyncio.run(async_main())
+    # asyncio.run(async_main_wrong())
