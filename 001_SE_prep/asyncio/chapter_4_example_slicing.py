@@ -11,7 +11,7 @@ async def example(count: int) -> str:
 
     for i in range(count):
         print(f"Before await inside the loop iteration {i}")
-        await asyncio.sleep(i)
+        await asyncio.sleep(count - i)
         print(f"After await inside the loop iteration {i}")
 
     print(f"Before await on example {count - 1}")
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     loop.set_task_factory(lambda loop, coro: TraceStep(coro, loop=loop))
 
     try:
-        result = loop.run_until_complete(example(2))
+        result = loop.run_until_complete(asyncio.gather(example(2), example(1)))
         print("Final result:", result)
     finally:
         loop.close()
