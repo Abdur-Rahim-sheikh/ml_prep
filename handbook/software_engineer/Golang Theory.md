@@ -12,6 +12,7 @@
 4. [Slice and Slice in Slice](#slice-and-slice-in-slice)
 5. [Slice Capacity](#slice-capacity)
 6. [Variadic Function](#variadic-function)
+7. [Basic types of Golang](#basic-types-of-golang)
 
 #### Internal Memory
 
@@ -179,3 +180,14 @@ func main(){
 }
 
 ```
+
+### Basic types of Golang
+
+- bool
+- string
+- int, int8, int16, int32, int64
+- unit, uint8, uint16, uint32, unit64, uintptr
+- byte - alias for unit8
+- rune - alias for int32 - represents a unicode code point
+- float32, float64
+- complex64, complex128
