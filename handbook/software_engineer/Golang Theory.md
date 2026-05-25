@@ -13,6 +13,7 @@
 5. [Slice Capacity](#slice-capacity)
 6. [Variadic Function](#variadic-function)
 7. [Basic types of Golang](#basic-types-of-golang)
+8. [Auto type conversion](#auto-type-conversion)
 
 #### Internal Memory
 
@@ -191,3 +192,18 @@ func main(){
 - rune - alias for int32 - represents a unicode code point
 - float32, float64
 - complex64, complex128
+
+**note** int, unit, unitptr are system depended either 32bit or 64bit
+
+### Auto type conversion
+
+Unlike other languages, Go does not allow auto type conversion
+
+like
+
+```go
+var f float = 2.0
+var z int = f
+```
+
+will through error. Not even int8 auto cast to int64 type. We need to exclusively cast each thing.
