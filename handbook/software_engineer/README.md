@@ -26,6 +26,7 @@
 22. [Https vs server-sent events vs websocket](#https-vs-server-sent-events-vs-websocket)
 23. [Auth vs Session vs JWT vs Refresh token](#auth-vs-session-vs-jwt-vs-refresh-token)
 24. [Program vs Process](#program-vs-process)
+25. [Does postresql allow read uncommitted isolation](#does-postgresql-allow-read-uncommitted-isolation)
 
 ### What are literals in Python?
 
@@ -400,3 +401,19 @@ Next we either use `session` or `jwt + refresh token` they are the real point of
   - file handling, and network connections.
   - A PCB (Process Control Block) to keep track of the process's state, resources, and other information.
   - A process can have multiple threads of execution, which are separate paths of execution within the same process. Each thread shares the same memory space and resources of the process, but can execute independently.
+
+### Does postresql allow read uncommitted isolation
+
+No, it does not allow read uncommited isolation. But we still can write
+the command, internally they will apply read committed level isolation.
+
+Now the second question arises, why they don't, and if they don't why even allow to write the command?
+
+Why they don't allow it?
+Allowing read uncommitted means, allowing dirty reads from other transactions. the whole idea of isolation was incorporated in postgresql
+back in 1999 in version 6.5. And from the day one they introduced multi version concurrency control (MVCC) architecture. introducing versioning for updated which is hardcoded logic to prevent reading uncommitted data.
+
+But why even allow the command?
+It's for compatibility with other popular languages which allow reading uncommitted read. So when people move to postgresql with legacy code, they don't hassle for it.
+
+Finally, they are not breaking any rule, by changing the isolation level silently internally. According to official SQL-92 standards, a database is perfectly allowed to substitude a requested asolation level with any level that is stricter and safer than what the user asked for.
