@@ -89,7 +89,7 @@ A change in single line completely changes the game.
 
 ### Relation between defer and closure
 
-We know that when a function returns another function, having some variable in the outer function, then the returned function is called closure or in other words, the returned function forms a closure with the outer function's escaping variables and putting them in the heap, so that those escaped variables can be used even after the outer function erased from the stack frame.
+We know that when a function returns another function, having some variable in the outer function, then the returned function is called closure or in other words, the returned function forms a closure with the outer function's escaping variables and putting them in the **heap**, so that those escaped variables can be used even after the outer function erased from the stack frame.
 
 Also we know that the escaped variables are bind with inner method and a snapshot of the variable at the time of escaping (last value before inner method defined), so if we change the value of the variable after the inner function defined, it will not change the value of the variable in the inner function.
 
@@ -117,11 +117,11 @@ func main(){
 
 Here the inner function forms a closure with the variable `x` of the outer function, and the value of `x` at the time of defining inner function is `10`, so even if we change the value of `x` to `20` after defining inner function, it will not change the value of `x` in inner function, so when we call inner function it will print `20` instead of `40`. And both closure1 and closure2 will start printing `20` because they both have the same snapshot of `x` at the time of defining inner function.
 
-Now if defer keyword call a function also forms a closure with the variables of the function, but it's **special** because for all other closure the outer function is erased from the stack when the inner function is called, but for defer the outer function is still there in the stack when the deferred function is called just before the outer function returns. So this time those variable are not snapshot with the deferred function, but their pointer is bind with the deferred function and kept in a linked-list in the very stack block of the function to be called in a stack/LIFO manner before the outer function returns, so if we change the value of the variable after the defer statement, it will change the value of the variable in the deferred function as well. And it is deliberately designed like this because defer is used to do some clean up work before the function returns, so it should have the latest value of the variable to do the clean up work properly.
+Now if defer keyword call a function also forms a closure with the variables of the function, but it's **special** because for all other closure the outer function is erased from the stack when the inner function is called, but for defer the outer function is still there in the stack when the deferred function is called just before the outer function returns. So this time those variable are not snapshot with the deferred function, but their pointer is bind with the deferred function and kept in a linked-list in the very stack/heap block of the function to be called in a stack/LIFO manner before the outer function returns, so if we change the value of the variable after the defer statement, it will change the value of the variable in the deferred function as well. And it is deliberately designed like this because defer is used to do some clean up work before the function returns, so it should have the latest value of the variable to do the clean up work properly.
 
 Now there is a gotcha if the escaped variable is also a returned variable. Now in go returned variables can be named or unnamed.
 
-If named returned variable get's the latest changes after defer statement is called but if the returned variable is unnamed then it will not get the latest changes after defer statement is called but the final value of if got at return statement not the change at defer. Cause in this case before the defer is called the return statement take a snapshot they are returning before starting to execute the defer statement.
+If named returned variable get's the latest changes after defer statement is called but if the returned variable is unnamed then it will not get the latest changes after defer statement is called but the final value of if got at return statement not the change at defer. Cause in this case before the defer is called the return statement take a snapshot (evaluated and saved) they are returning before starting to execute the defer statement.
 
 An example will shade more light on this
 
@@ -176,3 +176,5 @@ outer 20
 inner 40
 main 20
 ```
+
+But if we pass value to defer function then it will get the value at the time of defer statement, not the pointer.

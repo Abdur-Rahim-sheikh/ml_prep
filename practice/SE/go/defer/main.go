@@ -27,7 +27,28 @@ func calc()  int{
 	return result
 }
 
+func outer() (result int) {
+	fmt.Println("first outer", result)
+	show := func() {
+		result += 10
+		fmt.Println("defer", result)
+	}
+	defer show()
+
+	p:= func(a int){
+		a++
+		fmt.Println("ami", a)
+	}
+
+	defer p(result)
+	result = 5
+	defer fmt.Println(result)
+	fmt.Println("second", result)
+	return result
+}
+
 func main() {
 	fmt.Println(calculate())
 	fmt.Println(calc())
+	fmt.Println(outer())
 }
