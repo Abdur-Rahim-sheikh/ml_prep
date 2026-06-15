@@ -27,6 +27,7 @@
 23. [Auth vs Session vs JWT vs Refresh token](#auth-vs-session-vs-jwt-vs-refresh-token)
 24. [Program vs Process](#program-vs-process)
 25. [Does postresql allow read uncommitted isolation](#does-postgresql-allow-read-uncommitted-isolation)
+26. [An interesting problem with handicap](#an-interesting-problem-with-handicap)
 
 ### What are literals in Python?
 
@@ -417,3 +418,21 @@ But why even allow the command?
 It's for compatibility with other popular languages which allow reading uncommitted read. So when people move to postgresql with legacy code, they don't hassle for it.
 
 Finally, they are not breaking any rule, by changing the isolation level silently internally. According to official SQL-92 standards, a database is perfectly allowed to substitude a requested asolation level with any level that is stricter and safer than what the user asked for.
+
+### An interesting problem with handicap
+
+Let's given a array of integer, you need to return number of negative numbers.
+
+Pretty simple right?
+but you are hadicapped, you cannot use loop or any kind of conditions like if, case etc.
+
+But you can use below functions
+
+1. sum(i,j) -> sum of all values between index `i` and `j`
+2. index(val) -> index of the value
+3. append(val) -> appends value at the end of the array
+4. delete(i) -> deletes value at index `i`
+5. sort() -> sorts the array
+6. swap(i,j) swaps two index values `i` and `j`
+
+solve hint: append(0) -> sort() -> index(0) is the answer ha ha!
